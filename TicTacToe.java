@@ -2,18 +2,7 @@ import java.util.stream.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class testing {
-
-    public static void clearScreen() {  
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();  
-    }
-
-    public static void finishGame() {  
-        clearScreen();
-        System.out.println("Good Game!");
-    }
-
+public class TicTacToe {
 
     public static void main(String[] args) {
 
@@ -26,19 +15,25 @@ public class testing {
         //Game Loop System
         int rowSelection = 0;
         int columnSelection = 0;
+        int gameTurns = 0;
         boolean playerXTurn = true;
 
         while (true) {
+            gameTurns++;
 
             //Print Board UI
             System.out.println("\n\n\n\n\n");
+            System.out.println("  1   2   3");
+            int x = 1;
 
-            for(int i = 0; i < 3; i++) { 
+            for(int i = 0; i < 3; i++) {
                 String row = Arrays.toString(board[i]);
                 String rowUI = row.replace(",", " |").replace("[", "").replace("]", "").replace("-1", "O").replace("1", "X").replace("0", " ");
-                System.out.println(rowUI);
-                if (i != 2) { System.out.println("--+---+--"); } 
+                System.out.println(x + " " + rowUI);
+                x++;
+                if (i != 2) { System.out.println(" ---+---+---"); } 
                 }
+                
 
 
             //Announcing Turns
@@ -88,7 +83,6 @@ public class testing {
                 } else {
                     System.out.println("This plot is already marked.");
                 }
-                    break;
                 }
                 
             
@@ -107,13 +101,11 @@ public class testing {
                 int sum = IntStream.of(board[i]).sum();
             
                 if (sum == 3) {
-                    finishGame();
-                    System.out.println("X's win!");
+                    System.out.println("\nX's win!");
                     System.exit(0);
 
                 } else if (sum == -3) {
-                    finishGame();
-                    System.out.println("O's win!");
+                    System.out.println("\nO's win!");
                     System.exit(0);
                 } 
             }
@@ -125,13 +117,11 @@ public class testing {
                 int sum = board[0][i] + board[1][i] + board[2][i];
              
                 if (sum == 3) {
-                    finishGame();
-                    System.out.println("X's win!");
+                    System.out.println("\nX's win!");
                     System.exit(0);
 
                 } else if (sum == -3) {
-                    finishGame();
-                    System.out.println("O's win!");
+                    System.out.println("\nO's win!");
                     System.exit(0);
                 } 
             }
@@ -141,26 +131,22 @@ public class testing {
             int sum = board[0][0] + board[1][1] + board[2][2];
             
             if (sum == 3) {
-                finishGame();
-                System.out.println("X's win!");
+                System.out.println("\nX's win!");
                 System.exit(0);
 
             } else if (sum == -3) {
-                finishGame();
-                System.out.println("O's win!");
+                System.out.println("\nO's win!");
                 System.exit(0);
             }
 
             sum = board[0][2] + board[1][1] + board[2][0];
 
             if (sum == 3) {
-                finishGame();
-                System.out.println("X's win!");
+                System.out.println("\nX's win!");
                 System.exit(0);
 
             } else if (sum == -3) {
-                finishGame();
-                System.out.println("O's win!");
+                System.out.println("\nO's win!");
                 System.exit(0);
             }
 
