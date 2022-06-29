@@ -23,6 +23,7 @@ public class TicTacToe {
 
             //Print Board UI
             System.out.println("\n\n\n\n\n");
+            System.out.println("[ Round: " + gameTurns + "! ]\n");
             System.out.println("  1   2   3");
             int x = 1;
 
@@ -33,6 +34,71 @@ public class TicTacToe {
                 x++;
                 if (i != 2) { System.out.println(" ---+---+---"); } 
                 }
+
+
+            //Row Win Condition Check
+            if (gameTurns >= 6) {
+
+                for(int i = 0; i < 3; i++) { 
+                        
+                    int sum = IntStream.of(board[i]).sum();
+                
+                    if (sum == 3) {
+                        System.out.println("\nX's win!");
+                        System.exit(0);
+
+                    } else if (sum == -3) {
+                        System.out.println("\nO's win!");
+                        System.exit(0);
+                    } 
+                }
+                
+                //Column Win Condition Check
+                for(int i = 0; i < 3; i++) { 
+                    
+                    int sum = board[0][i] + board[1][i] + board[2][i];
+                
+                    if (sum == 3) {
+                        System.out.println("\nX's win!");
+                        System.exit(0);
+
+                    } else if (sum == -3) {
+                        System.out.println("\nO's win!");
+                        System.exit(0);
+                    } 
+                }
+
+
+                //Diagnols Win Condition Check
+                int sum = board[0][0] + board[1][1] + board[2][2];
+                
+                if (sum == 3) {
+                    System.out.println("\nX's win!");
+                    System.exit(0);
+
+                } else if (sum == -3) {
+                    System.out.println("\nO's win!");
+                    System.exit(0);
+                }
+
+                sum = board[0][2] + board[1][1] + board[2][0];
+
+                if (sum == 3) {
+                    System.out.println("\nX's win!");
+                    System.exit(0);
+
+                } else if (sum == -3) {
+                    System.out.println("\nO's win!");
+                    System.exit(0);
+                }
+
+                //Tie Win Condition Check
+                if (gameTurns >= 9) {
+                    System.out.println("\nIt's a tie!");
+                    System.exit(0);
+
+                }
+            }
                 
 
 
@@ -93,61 +159,6 @@ public class TicTacToe {
             } else {
                 board[rowSelection][columnSelection] = -1;
                 playerXTurn = true;
-            }
-
-            //Row Win Condition Check
-            for(int i = 0; i < 3; i++) { 
-                    
-                int sum = IntStream.of(board[i]).sum();
-            
-                if (sum == 3) {
-                    System.out.println("\nX's win!");
-                    System.exit(0);
-
-                } else if (sum == -3) {
-                    System.out.println("\nO's win!");
-                    System.exit(0);
-                } 
-            }
-
-
-            //Column Win Condition Check
-            for(int i = 0; i < 3; i++) { 
-                
-                int sum = board[0][i] + board[1][i] + board[2][i];
-             
-                if (sum == 3) {
-                    System.out.println("\nX's win!");
-                    System.exit(0);
-
-                } else if (sum == -3) {
-                    System.out.println("\nO's win!");
-                    System.exit(0);
-                } 
-            }
-
-
-            //Diagnols Win Condition Check
-            int sum = board[0][0] + board[1][1] + board[2][2];
-            
-            if (sum == 3) {
-                System.out.println("\nX's win!");
-                System.exit(0);
-
-            } else if (sum == -3) {
-                System.out.println("\nO's win!");
-                System.exit(0);
-            }
-
-            sum = board[0][2] + board[1][1] + board[2][0];
-
-            if (sum == 3) {
-                System.out.println("\nX's win!");
-                System.exit(0);
-
-            } else if (sum == -3) {
-                System.out.println("\nO's win!");
-                System.exit(0);
             }
 
         }
