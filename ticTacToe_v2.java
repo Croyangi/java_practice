@@ -1,5 +1,7 @@
 // A simple program to demonstrate
 // Tic-Tac-Toe Game.
+
+//This program is not made by Croyangi.
 import java.util.*;
 
 public class ticTacToe_v2 {
